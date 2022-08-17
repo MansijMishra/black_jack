@@ -5,8 +5,9 @@ using std::cout;
 
 int main()
 {
-    BlackJack bjack;
-    bjack.PrintScore(25);
+    BlackJack bjack("Epickaratedude02");
+    bjack.Deck();
+
 
     return 0;
 }

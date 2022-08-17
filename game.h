@@ -1,13 +1,17 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <iostream>
+
 class BlackJack
 {
     public:
 
-        BlackJack();
+        BlackJack(std::string username);
 
-        int PrintScore(int score);
+        void Deck();
+
+
 };
 
 #endif
