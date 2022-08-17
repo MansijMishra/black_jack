@@ -3,6 +3,8 @@
 #include <map>
 #include <string>
 #include <list>
+#include <ctime>
+
 
 using std::map;
 using std::list;
@@ -12,16 +14,18 @@ using std::pair;
 
 BlackJack::BlackJack(std::string username)
 {
-    //std::cout << "Welcome " << username << std::endl;
+    std::cout << "Welcome " << username << std::endl;
+
+    CardInit();
+
+    std::cout << "Deck Initialized!" << std::endl;
 
 }
 
 void BlackJack::CardInit()
 {
     string suites[4] = {"Spades", "Hearts", "Diamonds", "Clubs"};
-    string names[13] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
-
-    list<string> cards;   
+    string names[13] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};   
 
     for(int i = 0; i < 4; i++)
     {
@@ -30,12 +34,8 @@ void BlackJack::CardInit()
             cards.push_back(names[j] + " of " + suites[i]);
         }
     }
-
-    for(auto elem : cards)
-    {
-        std::cout << elem << std::endl;
-    }
 }
+
 
 void BlackJack::DeckValues()
 {
@@ -66,7 +66,7 @@ void BlackJack::DeckValues()
     deck.insert(pair<int, list<string>>(9,nine));
     deck.insert(pair<int, list<string>>(10,ten));
 
-    for(auto pair : deck)
+    /*for(auto pair : deck)
     {
         std::cout << pair.first << " - ";
 
@@ -75,6 +75,31 @@ void BlackJack::DeckValues()
 
 
         std::cout << std::endl;
-    }
+    }*/
     
+
+}
+
+void BlackJack::Shuffle()
+{
+    srand(time(NULL));
+
+    for (int i = 0; i < 52 ; i++)
+    {
+        int swap_index = rand() % 52;
+        string temp = cards[i];
+        cards[i] = cards[swap_index];
+        cards[swap_index] = temp;
+
+    }
+
+
+}
+
+void BlackJack::PrintDeck()
+{
+    for(auto elem : cards)
+    {
+        std::cout << elem << std::endl;
+    }
 }
