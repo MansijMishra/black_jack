@@ -6,8 +6,8 @@ using std::cout;
 int main()
 {
     BlackJack bjack("Epickaratedude02");
-    bjack.Deck();
-
+    //bjack.Deck();
+    bjack.CardInit();
 
     return 0;
 }

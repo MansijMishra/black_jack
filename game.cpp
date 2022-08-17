@@ -12,10 +12,32 @@ using std::pair;
 
 BlackJack::BlackJack(std::string username)
 {
-    std::cout << "Welcome " << username << std::endl;
+    //std::cout << "Welcome " << username << std::endl;
+
 }
 
-void BlackJack::Deck()
+void BlackJack::CardInit()
+{
+    string suites[4] = {"Spades", "Hearts", "Diamonds", "Clubs"};
+    string names[13] = {"A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"};
+
+    list<string> cards;   
+
+    for(int i = 0; i < 4; i++)
+    {
+        for(int j = 0; j < 13; j++)
+        {
+            cards.push_back(names[j] + " of " + suites[i]);
+        }
+    }
+
+    for(auto elem : cards)
+    {
+        std::cout << elem << std::endl;
+    }
+}
+
+void BlackJack::DeckValues()
 {
     list<string> one {"A of Spades","A of Hearts","A of Diamonds", "A of Clubs"};
     list<string> two {"2 of Spades","2 of Hearts","2 of Diamonds", "2 of Clubs"};

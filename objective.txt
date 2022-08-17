@@ -1,0 +1,15 @@
+-cards array
+
+
+class functions:
+
+constructor (deck init)
+shuffle
+deal
+point_tracker
+bets
+game_loop
+
+// Shuffle needs to use a seperate deck object (immutable deck of cards, not the same as the deck func)
+
+// Deal will use shuffle and deck (for checking values of drawn cards) 

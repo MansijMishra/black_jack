@@ -9,8 +9,11 @@ class BlackJack
 
         BlackJack(std::string username);
 
-        void Deck();
+        void CardInit();
 
+        void DeckValues();
+
+        void Shuffle();
 
 };
 
