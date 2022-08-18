@@ -15,6 +15,10 @@ class BlackJack
 
         void CardInit();
 
+        int player_score {0};
+
+        int dealer_score {0};
+
     public:
 
         BlackJack(std::string username);
@@ -26,6 +30,8 @@ class BlackJack
         void PrintDeck();
 
         int Deal();
+
+        void ScoreTally(int player_hand, int dealer_hand, string display_score = "N");
 
 };
 

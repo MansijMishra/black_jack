@@ -6,10 +6,8 @@ using std::cout;
 int main()
 {
     BlackJack bjack("Epickaratedude02");
-    bjack.PrintDeck();
-    cout << "------------------------" << std::endl;
-    cout << bjack.Deal() << std::endl;
-    cout << bjack.Deal() << std::endl;
+    bjack.ScoreTally(12,20);
+    
  
 
     return 0;

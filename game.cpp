@@ -94,6 +94,20 @@ int BlackJack::Deal()
     
     string temp = cards[cards.size()-1];
     cards.pop_back();
+    std::cout << temp << std::endl;
     return DeckValues(temp);
 
+}
+
+
+void BlackJack::ScoreTally(int player_hand, int dealer_hand, string display_score)
+{
+    player_score += player_hand;
+    dealer_score += dealer_hand;
+
+    if(display_score == "Y")
+    {
+        std::cout << "DEALER: " << dealer_score << " POINTS" << std::endl;
+        std::cout << "PLAYER: " << player_score << " POINTS" << std::endl;
+    }
 }
