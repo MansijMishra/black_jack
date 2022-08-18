@@ -6,6 +6,9 @@ class functions:
 constructor (deck init)
 shuffle
 deal
+
+// Display card from deck/map it to its value, take card out of deck.
+
 point_tracker
 bets
 game_loop

@@ -13,17 +13,19 @@ class BlackJack
 
         std::vector<string> cards;
 
+        void CardInit();
+
     public:
 
         BlackJack(std::string username);
 
-        void CardInit();
-
-        void DeckValues();
+        int DeckValues(string card_obj);
 
         void Shuffle();
 
         void PrintDeck();
+
+        int Deal();
 
 };
 

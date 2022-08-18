@@ -8,8 +8,9 @@ int main()
     BlackJack bjack("Epickaratedude02");
     bjack.PrintDeck();
     cout << "------------------------" << std::endl;
-    bjack.Shuffle();
-    bjack.PrintDeck();
+    cout << bjack.Deal() << std::endl;
+    cout << bjack.Deal() << std::endl;
+ 
 
     return 0;
 }
