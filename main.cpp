@@ -9,8 +9,5 @@ int main()
 
     bjack.GamePlay();
     
-    
- 
-
     return 0;
 }

@@ -19,6 +19,10 @@ class BlackJack
 
         int dealer_score {0};
 
+        std::vector<string> player_hand;
+
+        std::vector<string> dealer_hand;
+
         void ScoreTally(int player_hand=0, int dealer_hand=0);
 
         void print_score(char player_print_score, char dealer_print_score);
@@ -35,7 +39,7 @@ class BlackJack
 
         void PrintDeck();
 
-        int Deal();
+        int Deal(string card_owner);
         
         void GamePlay();
 

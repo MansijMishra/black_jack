@@ -88,14 +88,19 @@ void BlackJack::PrintDeck()
 }
 
 
-int BlackJack::Deal()
+int BlackJack::Deal(string card_owner)
 {
     if(cards.size() == 0)
         return 0;
     
     string temp = cards[cards.size()-1];
     cards.pop_back();
-    std::cout << temp << std::endl;
+
+    if(card_owner == "PLAYER")
+        player_hand.push_back(temp);
+    else if(card_owner == "DEALER")
+        dealer_hand.push_back(temp);
+
     return DeckValues(temp);
 
 }
@@ -112,9 +117,23 @@ void BlackJack::print_score(char player_print_score, char dealer_print_score)
 {
     if(player_print_score == 'Y')
         cout << "PLAYER SCORE:" << player_score << std::endl;
+        cout << username << "'s Hand: ";
+
+        for(int i = 0; i < player_hand.size(); i++)
+        {
+            cout << player_hand[i] << " ";
+        }
+        cout << std::endl;
     
     if(dealer_print_score == 'Y')
-        cout << "PLAYER SCORE:" << dealer_score << std::endl;
+        cout << "DEALER SCORE:" << dealer_score << std::endl;
+        cout <<  "Dealers's Hand: ";
+
+        for(int i = 0; i < dealer_hand.size(); i++)
+        {
+            cout << dealer_hand[i] << " ";
+        }
+        cout << std::endl;
 }
 
 
@@ -123,10 +142,10 @@ void BlackJack::GamePlay()
     std::cout << "Welcome to BlackJack" << std::endl;
     std::cout << "..Deck created and shuffled..." << std::endl;
 
-    ScoreTally(Deal(),0);
-    ScoreTally(Deal(),0);
-    ScoreTally(0,Deal());
-    ScoreTally(0,Deal());
+    ScoreTally(Deal("PLAYER"),0);
+    ScoreTally(Deal("PLAYER"),0);
+    ScoreTally(0,Deal("DEALER"));
+    ScoreTally(0,Deal("DEALER"));
 
     print_score('Y','Y');
 }
