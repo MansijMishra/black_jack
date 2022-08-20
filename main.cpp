@@ -6,7 +6,9 @@ using std::cout;
 int main()
 {
     BlackJack bjack("Epickaratedude02");
-    bjack.ScoreTally(12,20);
+
+    bjack.GamePlay();
+    
     
  
 

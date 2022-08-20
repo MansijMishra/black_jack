@@ -11,16 +11,17 @@ using std::map;
 using std::list;
 using std::string;
 using std::pair;
+using std::cout;
 
 
-BlackJack::BlackJack(std::string username)
-{
-    std::cout << "Welcome " << username << std::endl;
+BlackJack::BlackJack(string user_inpt)
+{   
+    username = user_inpt;
+
+    cout << "User:  " << username << std::endl;
 
     CardInit();
     Shuffle();
-
-    std::cout << "Deck Initialized!" << std::endl;
 
 }
 
@@ -100,14 +101,32 @@ int BlackJack::Deal()
 }
 
 
-void BlackJack::ScoreTally(int player_hand, int dealer_hand, string display_score)
+void BlackJack::ScoreTally(int player_hand, int dealer_hand)
 {
     player_score += player_hand;
     dealer_score += dealer_hand;
+}
 
-    if(display_score == "Y")
-    {
-        std::cout << "DEALER: " << dealer_score << " POINTS" << std::endl;
-        std::cout << "PLAYER: " << player_score << " POINTS" << std::endl;
-    }
+
+void BlackJack::print_score(char player_print_score, char dealer_print_score)
+{
+    if(player_print_score == 'Y')
+        cout << "PLAYER SCORE:" << player_score << std::endl;
+    
+    if(dealer_print_score == 'Y')
+        cout << "PLAYER SCORE:" << dealer_score << std::endl;
+}
+
+
+void BlackJack::GamePlay()
+{
+    std::cout << "Welcome to BlackJack" << std::endl;
+    std::cout << "..Deck created and shuffled..." << std::endl;
+
+    ScoreTally(Deal(),0);
+    ScoreTally(Deal(),0);
+    ScoreTally(0,Deal());
+    ScoreTally(0,Deal());
+
+    print_score('Y','Y');
 }
