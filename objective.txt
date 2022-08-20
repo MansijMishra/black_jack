@@ -17,11 +17,13 @@ game_loop
 
 // Deal will use shuffle and deck (for checking values of drawn cards) 
 
+// Figure out why username is not printing (Implement getter/setter?)
+
 
 RULES:
 [BASIC BLACKJACK RULES NO BETTING IMPLEMENTATION]
--deal two cards to the player
--deal two cards to the dealer (internally tracking, not revealing it)
+-deal two cards to the player (DONE)
+-deal two cards to the dealer (internally tracking, not revealing it) (POSSIBLE)
 -player can continue to hit or decide to stay
 -Once player is finished (accounting for over 21) dealer reveals cards
 -IF dealer total < 17, continue drawing until >= 17, or dealer busts.

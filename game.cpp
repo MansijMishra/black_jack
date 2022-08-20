@@ -18,7 +18,7 @@ BlackJack::BlackJack(string user_inpt)
 {   
     username = user_inpt;
 
-    cout << "User:  " << username << std::endl;
+    cout << "USER:  " << username << std::endl;
 
     CardInit();
     Shuffle();
@@ -147,5 +147,39 @@ void BlackJack::GamePlay()
     ScoreTally(0,Deal("DEALER"));
     ScoreTally(0,Deal("DEALER"));
 
-    print_score('Y','Y');
+    print_score('Y','N');
+
+
+    if(player_score == 21)
+        cout << username << " WINS!" << std::endl;
+    
+    else if(player_score == 21 && dealer_score == 21)
+        cout << "It was a draw..." << std::endl;
+
+    else
+    {
+        while(true)
+        {
+            if(player_score > 21)
+            {
+                cout << username << " Loses..." << std::endl;
+                cout << "Dealer WINS!" << std::endl;
+                break;
+            }
+            
+            char response;
+            cout << "Would you like to draw another card " << username << "?[Y/N]" << std::endl;
+            std::cin >> response;
+
+            if(response == 'Y')
+            {
+                ScoreTally(Deal("PLAYER"),0);
+                print_score('Y','N');
+            }
+            //Implement dealer logic/plays
+            else
+                break;
+        }
+
+    }
 }

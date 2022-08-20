@@ -1,6 +1,7 @@
 make.exe --dry-run --always-make --keep-going --print-directory
 make.exe: Entering directory 'c:/Users/Mansij/Desktop/c++ projects/Blackjack'
 g++ -c main.cpp
+ 
 g++ -c game.cpp
 g++ main.o game.o -o main
 make.exe: Leaving directory 'c:/Users/Mansij/Desktop/c++ projects/Blackjack'

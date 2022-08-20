@@ -27,9 +27,9 @@ class BlackJack
 
         void print_score(char player_print_score, char dealer_print_score);
 
-    public:
-
         string username;
+
+    public:
 
         BlackJack(string user_input);
 
