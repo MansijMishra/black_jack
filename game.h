@@ -29,6 +29,8 @@ class BlackJack
 
         string username;
 
+        void WinLoseTie();
+
     public:
 
         BlackJack(string user_input);
