@@ -18,7 +18,7 @@ BlackJack::BlackJack(string user_inpt)
 {   
     username = user_inpt;
 
-    cout << "USER:  " << username << std::endl;
+    cout << "USER: " << username << std::endl;
 
     CardInit();
     Shuffle();
@@ -116,6 +116,8 @@ void BlackJack::ScoreTally(int player_hand, int dealer_hand)
 void BlackJack::print_score(char player_print_score, char dealer_print_score)
 {
     if(player_print_score == 'Y')
+    {
+        cout << "------------------------------------" << std::endl;
         cout << "PLAYER SCORE:" << player_score << std::endl;
         cout << username << "'s Hand: ";
 
@@ -123,9 +125,12 @@ void BlackJack::print_score(char player_print_score, char dealer_print_score)
         {
             cout << player_hand[i] << " ";
         }
-        cout << std::endl;
-    
+        cout << "\n";
+        cout << "------------------------------------" << std::endl;
+    }
     if(dealer_print_score == 'Y')
+    {
+        cout << "------------------------------------" << std::endl;
         cout << "DEALER SCORE:" << dealer_score << std::endl;
         cout <<  "Dealers's Hand: ";
 
@@ -133,22 +138,29 @@ void BlackJack::print_score(char player_print_score, char dealer_print_score)
         {
             cout << dealer_hand[i] << " ";
         }
-        cout << std::endl;
+        cout << "\n";
+        cout << "------------------------------------" << std::endl;
+    }
 }
 
 
 void BlackJack::WinLoseTie()
 {
     if(player_score == 21 || (dealer_score > 21 && player_score < 21))
+    {
+        print_score('Y','N');
         cout << username << " WINS!" << std::endl;
-
+    }
     else if(dealer_score == 21 || (player_score > 21 && dealer_score < 21))
+    {
+        print_score('N','Y');
         cout << "DEALER WINS!" << std::endl;
-    
+    }
     else if(player_score == 21 && dealer_score == 21)
+    {
+        print_score('Y','Y');
         cout << "It was a draw..." << std::endl;
-    
-
+    }
 }
 
 
@@ -169,62 +181,54 @@ void BlackJack::GamePlay()
 
     else
     {
-    /*
-    if(player_score > 21)
-    {
-        cout << username << " Loses..." << std::endl;
-        cout << "Dealer WINS!" << std::endl;
-    }
-    */
-    char response;
-    cout << "Would you like to draw another card " << username << "?[Y/N]" << std::endl;
-    std::cin >> response;
+        char response;
+        cout << "Would you like to draw another card " << username << "?[Y/N]" << std::endl;
+        std::cin >> response;
 
-    if(response == 'Y')
-    {
-        while(response == 'Y')
+        if(response == 'Y')
         {
-            ScoreTally(Deal("PLAYER"),0);
-            print_score('Y','N');
-            if(dealer_score >= 21 || player_score >= 21)
+            while(response == 'Y')
             {
-                WinLoseTie();
-                break;
+                ScoreTally(Deal("PLAYER"),0);
+                print_score('Y','N');
+                if(dealer_score >= 21 || player_score >= 21)
+                {
+                    WinLoseTie();
+                    break;
+                }
+                cout << "Would you like to draw another card " << username << "?[Y/N]" << std::endl;
+                std::cin >> response;
             }
-            cout << "Would you like to draw another card " << username << "?[Y/N]" << std::endl;
-            std::cin >> response;
+
         }
+        //Implement dealer logic/plays
+        if(dealer_score < 21 && player_score < 21)
+        {  
+            print_score('N','Y');
 
-    }
-    //Implement dealer logic/plays
-    if(dealer_score < 21 && player_score < 21)
-    {  
-        print_score('N','Y');
-
-        if (dealer_score < 17)
-        {
-            while(dealer_score < 17)
+            if (dealer_score < 17)
             {
-                ScoreTally(0,Deal("DEALER"));
-                print_score('N','Y');
-            }
-        }                
+                while(dealer_score < 17)
+                {
+                    ScoreTally(0,Deal("DEALER"));
+                    print_score('N','Y');
+                }
+            }                
 
-        if(dealer_score >= 17 && response != 'Y')
-        {
-            if(dealer_score >= 21 || player_score >= 21)
-                WinLoseTie();
-            else
+            if(dealer_score >= 17 && response != 'Y')
             {
-                if(player_score > dealer_score)
-                    cout << username << " WINS!" << std::endl;
-                else if(dealer_score > player_score)
-                    cout << "DEALER WINS!" << std::endl;
+                if(dealer_score >= 21 || player_score >= 21)
+                    WinLoseTie();
                 else
-                    cout << "It was a draw..." << std::endl;
+                {
+                    if(player_score > dealer_score)
+                        cout << username << " WINS!" << std::endl;
+                    else if(dealer_score > player_score)
+                        cout << "DEALER WINS!" << std::endl;
+                    else if (dealer_score == player_score)
+                        cout << "It was a draw..." << std::endl;
+                }
             }
         }
-
-    }
     }
 }

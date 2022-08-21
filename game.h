@@ -31,10 +31,6 @@ class BlackJack
 
         void WinLoseTie();
 
-    public:
-
-        BlackJack(string user_input);
-
         int DeckValues(string card_obj);
 
         void Shuffle();
@@ -42,6 +38,11 @@ class BlackJack
         void PrintDeck();
 
         int Deal(string card_owner);
+        
+
+    public:
+
+        BlackJack(string user_input);
         
         void GamePlay();
 
