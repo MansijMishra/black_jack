@@ -5,8 +5,12 @@ using std::cout;
 
 int main()
 {
-    BlackJack bjack("Epickaratedude02");
-
+    std::string user;
+    std::cout << "Enter Username: ";
+    std::cin >> user;
+    std::cout << std::endl;
+    BlackJack bjack(user);
+    
     bjack.GamePlay();
     
     return 0;
